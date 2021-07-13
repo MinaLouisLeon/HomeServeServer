@@ -28,6 +28,7 @@ const db = knex({
 app.use(bodyparser.json())
 
 app.get('/lights',(req,res) => {
+  console.log("testing connectiong to server")
     db.select('*').from('lights').then((data) => {
         res.json(data)
     })
