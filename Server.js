@@ -25,5 +25,13 @@ app.get('/lights',(req,res) => {
     })
 })
 
+app.post('/sublights',(req,res) => {
+  console.log(req.body)
+  db.select('*').from('sublights').where('light_item',req.body.item).then((data) => {
+    console.log(data);
+    res.json(data);
+  })
+})
+
 app.listen(3000);
 
