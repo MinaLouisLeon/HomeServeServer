@@ -6,7 +6,7 @@ const { json } = require('body-parser');
 var mqtt = require('mqtt');
 const app = express();
 app.use(cors());
-const db = knex({
+/*const db = knex({
     client: 'pg',
     connection: {
       host : '127.0.0.1',
@@ -14,7 +14,15 @@ const db = knex({
       password : '3694',
       database : 'borg_el_arab' 
     }
-});
+});*/
+
+const db = knex({
+  client: 'pg',
+  connection: {
+    connectionString : process.env.DATABASE_URL,
+    ssl: true,
+  }
+})
 
 
 app.use(bodyparser.json())
