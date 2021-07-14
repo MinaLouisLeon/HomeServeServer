@@ -42,5 +42,7 @@ app.post('/sublights',(req,res) => {
   })
 })
 
+app.post('/changingstatus')
+
 app.listen(process.env.PORT || 3000);
 
