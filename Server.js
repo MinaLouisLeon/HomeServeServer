@@ -44,12 +44,9 @@ app.post('/sublights',(req,res) => {
 
 app.post('/toggle-sublight',async (req,res) => {
   console.log(req.body)
-  let newList = {}
   await db("sublights").where('id',req.body.id)
-    .update({'status':req.body.sub_light_status,'icon_status':req.body.sub_light_iconStatus})
-    .then(db.select('*').from('sublights').where('light_item',req.body.item).then((data) => {
-      res.json(data);
-    }))
+  .update({'status':req.body.sub_light_status,'icon_status':req.body.sub_light_iconStatus})
+  res.json(Math.floor(Math.random()*10));
 })
 
 app.listen(process.env.PORT || 3000);
