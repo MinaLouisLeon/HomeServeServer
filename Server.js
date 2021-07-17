@@ -49,5 +49,11 @@ app.post('/toggle-sublight',async (req,res) => {
   res.json(Math.floor(Math.random()*10));
 })
 
+app.post('/fetch-sublight-settings',(req,res) => {
+  db.select('*').from('sublights').where('id',req.body.id).then((data)=>{
+    res.json(data)
+  })
+})
+
 app.listen(process.env.PORT || 3000);
 
