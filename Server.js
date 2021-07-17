@@ -55,5 +55,17 @@ app.post('/fetch-sublight-settings',(req,res) => {
   })
 })
 
+app.post('/setChecked',async (req,res) => {
+  console.log(req.body)
+  await db("sublights").where('id',req.body.id).update('enable',req.body.enable);
+  res.json(Math.floor(Math.random()*10));
+})
+
+app.post('/subitem-name',async (req,res) => {
+  console.log(req.body)
+  await db("sublights").where('id',req.body.id).update('sub_light_item',req.body.sub_light_item);
+  res.json(Math.floor(Math.random()*10));
+})
+
 app.listen(process.env.PORT || 3000);
 
