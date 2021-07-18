@@ -67,5 +67,12 @@ app.post('/subitem-name',async (req,res) => {
   res.json(Math.floor(Math.random()*10));
 })
 
+app.post('/setting-fetch-enable',(req,res)=>{
+  console.log(req.body)
+  db.select('*').from('lights').where('light_item',req.body.light_item).then((data)=> {
+    res.json(data);
+  })
+})
+
 app.listen(process.env.PORT || 3000);
 
